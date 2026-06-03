@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why Linux — </title>
+<link rel="stylesheet" href="/css/wiki.css">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+</head>
+<body class="skin-light text-standard width-standard">
+
+<nav id="topnav">
+  <div id="topnav-inner">
+    <span id="site-logo">Personal Wiki of Pranav</span>
+    <div class="topnav-links">
+      <a href="/" >Main Page</a>
+      <a href="/projects" >Projects</a>
+      <a href="/experience" >Experience</a>
+      <a href="/blog" class="active">Blog</a>
+      <a href="/contact" >Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div id="subnav">
+  <div id="subnav-inner">
+  </div>
+</div>
+
+<div id="main">
+
+  <aside id="sidebar">
+    <div class="toc-box">
+      <div class="toc-title">Contents <button id="toc-toggle" onclick="toggleToc()">hide</button></div>
+      <div id="toc-body">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#why-linux">Why Linux</a></li>
+    <li><a href="#where-to-start">Where to start</a></li>
+    <li><a href="#see-also">See also</a></li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </aside>
+
+  <div id="article-wrap">
+
+    <div id="breadcrumb-bar">
+      <div id="breadcrumb">
+        
+          <a href="/">Main Page</a>
+          <span class="breadcrumb-sep">›</span>
+          <span class="breadcrumb-cur">Why Linux</span>
+        
+      </div>
+    </div>
+
+    <div id="content-row">
+
+      <article id="content">
+        <h1 id="article-title">Why Linux</h1>
+	<p class="article-subtitle">From <a href="https://github.com/pranav10780">pranav10780</a></p>
+        
+  <div class="post-meta">
+    <span class="post-date">1 June 2026</span>
+    
+      <span class="post-tags">
+        
+          <span class="post-tag">linux</span>
+        
+          <span class="post-tag">beginners</span>
+        
+          <span class="post-tag">open source</span>
+        
+      </span>
+    
+  </div>
+  <p>Linux is the foundation of almost everything interesting in computing —
+servers, Android, embedded systems, and most of the open source world runs on it.</p>
+<h2 id="why-linux">Why Linux</h2>
+<p>After switching from Windows I noticed a few things immediately. The terminal
+is actually useful. Software installation is one command. The system does what
+you tell it to do rather than the other way around.</p>
+<h2 id="where-to-start">Where to start</h2>
+<p>If you have never used Linux before, start with a distribution that has good
+documentation and a large community. Arch Linux is not the place to start —
+but the <a href="https://wiki.archlinux.org">ArchWiki</a> is useful regardless of which
+distribution you use.</p>
+<p>If you don&rsquo;t have a pc at home i highly recommend using <a href="https://wiki.termux.com/wiki/Main_Page">Termux</a> to learn linux</p>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="/projects">My projects</a> — tools I have built for Linux</li>
+<li><a href="/experience">Experience</a> — my background</li>
+</ul>
+
+
+      </article>
+
+      <aside id="appearance-panel">
+        <div class="appearance-box">
+          <div class="appearance-title">Appearance <button onclick="toggleAppearance()" id="app-toggle">hide</button></div>
+          <div id="appearance-body">
+            <div class="app-section-label">Text</div>
+            <div class="app-options">
+              <label class="app-option"><input type="radio" name="text-size" value="small" onchange="setTextSize(this.value)"> Small</label>
+              <label class="app-option"><input type="radio" name="text-size" value="standard" checked onchange="setTextSize(this.value)"> Standard</label>
+              <label class="app-option"><input type="radio" name="text-size" value="large" onchange="setTextSize(this.value)"> Large</label>
+            </div>
+            <div class="app-section-label">Width</div>
+            <div class="app-options">
+              <label class="app-option"><input type="radio" name="width" value="standard" checked onchange="setWidth(this.value)"> Standard</label>
+              <label class="app-option"><input type="radio" name="width" value="wide" onchange="setWidth(this.value)"> Wide</label>
+            </div>
+            <div class="app-section-label">Color</div>
+            <div class="app-options">
+	      <label class="app-option"><input type="radio" name="color" value="light" checked onchange="setColor(this.value)"> Light</label>
+              <label class="app-option"><input type="radio" name="color" value="auto" onchange="setColor(this.value)"> Grey</label>
+              <label class="app-option"><input type="radio" name="color" value="dark" onchange="setColor(this.value)"> Black</label>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<footer id="footer">
+  <span>This page was last edited on 1 June 2026.</span>
+  <span>
+    <a href="#">Source on GitHub</a>
+  </span>
+</footer>
+
+<script>
+function toggleToc() {
+  var body = document.getElementById('toc-body');
+  var btn = document.getElementById('toc-toggle');
+  if (body.style.display === 'none') {
+    body.style.display = '';
+    btn.textContent = 'hide';
+  } else {
+    body.style.display = 'none';
+    btn.textContent = 'show';
+  }
+}
+function toggleAppearance() {
+  var body = document.getElementById('appearance-body');
+  var btn = document.getElementById('app-toggle');
+  if (body.style.display === 'none') {
+    body.style.display = '';
+    btn.textContent = 'hide';
+  } else {
+    body.style.display = 'none';
+    btn.textContent = 'show';
+  }
+}
+function setTextSize(size) {
+  document.body.classList.remove('text-small', 'text-standard', 'text-large');
+  document.body.classList.add('text-' + size);
+  localStorage.setItem('text-size', size);
+}
+function setWidth(width) {
+  document.body.classList.remove('width-standard', 'width-wide');
+  document.body.classList.add('width-' + width);
+  localStorage.setItem('width', width);
+}
+function setColor(color) {
+  document.body.classList.remove('skin-light', 'skin-dark', 'skin-auto');
+  document.body.classList.add('skin-' + color);
+  localStorage.setItem('color', color);
+}
+(function() {
+  var size = localStorage.getItem('text-size');
+  var width = localStorage.getItem('width');
+  var color = localStorage.getItem('color');
+  if (size) { setTextSize(size); document.querySelector('input[value="' + size + '"][name="text-size"]').checked = true; }
+  if (width) { setWidth(width); document.querySelector('input[value="' + width + '"][name="width"]').checked = true; }
+  if (color) { setColor(color); document.querySelector('input[value="' + color + '"][name="color"]').checked = true; }
+})();
+</script>
+
+</body>
+</html>

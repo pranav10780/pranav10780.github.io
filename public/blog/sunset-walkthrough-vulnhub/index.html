@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sunset Walkthrough - Vulnhub</title>
+<link rel="stylesheet" href="/css/wiki.css">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+</head>
+<body class="skin-light text-standard width-standard">
+
+<nav id="topnav">
+  <div id="topnav-inner">
+    <span id="site-logo">Personal Wiki of Pranav</span>
+    <div class="topnav-links">
+      <a href="/" >Main Page</a>
+      <a href="/projects" >Projects</a>
+      <a href="/experience" >Experience</a>
+      <a href="/blog" class="active">Blog</a>
+      <a href="/contact" >Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div id="subnav">
+  <div id="subnav-inner">
+  </div>
+</div>
+
+<div id="main">
+
+  <aside id="sidebar">
+    <div class="toc-box">
+      <div class="toc-title">Contents <button id="toc-toggle" onclick="toggleToc()">hide</button></div>
+      <div id="toc-body">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#reconnaissance">Reconnaissance</a></li>
+    <li><a href="#password-cracking">Password Cracking</a></li>
+    <li><a href="#privilege-escalation">Privilege Escalation</a></li>
+    <li><a href="#see-also">See also</a></li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </aside>
+
+  <div id="article-wrap">
+
+      <div id="breadcrumb">
+        
+          <a href="/">Main Page</a>
+          <span class="breadcrumb-sep">›</span>
+          <a href="/blog">Blog</a>
+          <span class="breadcrumb-sep">›</span>
+          <span class="breadcrumb-cur">Sunset Walkthrough - Vulnhub</span>
+        
+      </div>
+
+    <div id="content-row">
+
+      <article id="content">
+        <h1 id="article-title">Sunset Walkthrough - Vulnhub</h1>
+	<p class="article-subtitle">From <a href="https://github.com/pranav10780">pranav10780</a></p>
+        
+  <div class="post-meta">
+    <span class="post-date">18 June 2025</span>
+    
+      <span class="post-tags">
+        
+          <span class="post-tag">linux</span>
+        
+          <span class="post-tag">ctf</span>
+        
+          <span class="post-tag">hacking</span>
+        
+      </span>
+    
+  </div>
+  <p>Sunset is crafted by the Whitecr0wz. This blog provides information on how to
+exploit the underlaying vulnerabilities in sunset machine</p>
+<p>You can also easily download sunset through <a href="https://www.vulnhub.com/entry/sunset-1,339/">vulnhub</a></p>
+<p>First we need to take a look at the available ports on the machine by port scanning using nmap</p>
+<h2 id="reconnaissance">Reconnaissance</h2>
+<p><code>&gt; nmap [ip addr]</code></p>
+<p><img src="/images/sunset/1.webp" alt="nmap scan"></p>
+<p>This show that the machine has 2 ports open, lets scan for more info</p>
+<p><code>&gt; nmap [ip addr] -p 21,22 -A</code></p>
+<p><img src="/images/sunset/2.webp" alt="nmap scan"></p>
+<p>This reveals more information about the target system. It shows that ftp allows for anonymous logins, Lets try that.</p>
+<p><code>&gt; ftp [ip addr]</code></p>
+<p><img src="/images/sunset/3.png" alt="ftp"></p>
+<p>As you can see in the above image we were able to connect to the target system using ftp using anonymous credentials [anonymous:anonymous]</p>
+<p>From there after typing “ls” we can see a file called “backup”, we can download this file using the get command</p>
+<p>Now we should look inside the file “backup”</p>
+<p><img src="/images/sunset/4.png" alt="backup"></p>
+<p>It appears to be hashes of different users, now copy paste the line which starts with sunset and enter it into a new file with a name of your choice. Then we will break the hash using john the ripper tool along with the rockyou.txt wordlist</p>
+<h2 id="password-cracking">Password Cracking</h2>
+<p><code>&gt; john [filename] --wordlist=/usr/share/wordlists/rockyou.txt</code></p>
+<p><img src="/images/sunset/5.webp" alt="john"></p>
+<blockquote>
+<p>Note: If you have already cracked the hash then in order for the password to appear again you have to enter <code>john — show sunset</code></p>
+</blockquote>
+<p>As you can see the password of user sunset is <code>cheer14</code>, we can use this credentials to login via ssh</p>
+<p><code>&gt; ssh sunset@[ip addr]</code></p>
+<p><img src="/images/sunset/6.webp" alt="ssh"></p>
+<p>We can look around the files to find a file named <code>user.txt</code> which contains the user flag</p>
+<p><img src="/images/sunset/7.webp" alt="user"></p>
+<p>Now we need to find the root flag which is probably located in the root directory</p>
+<p><img src="/images/sunset/8.webp" alt="root"></p>
+<p>We cannot access the root folder access it doesn’t allow anyone to access it other than root itself, we need to find a way to escalate our privilege in order to access the files</p>
+<h2 id="privilege-escalation">Privilege Escalation</h2>
+<p><code>&gt; sudo -l</code></p>
+<p><img src="/images/sunset/9.webp" alt="root"></p>
+<p>Running sudo -l as sunset show us all the binaries that we can run with sudo privileages. The binary “ed” can be run as sudo, we search in the website <a href="https://gtfobins.org/">GTFOBins</a> to see what we can do with this binary</p>
+<p><img src="/images/sunset/10.webp" alt="gtfo"></p>
+<p>Here we can see that under the sudo section that if it is run with sudo it doesn’t drop the privileges and we get a privilege escalation</p>
+<p><code>&gt; sudo ed</code></p>
+<p><img src="/images/sunset/11.webp" alt="root"></p>
+<p>We are able to successfully spawn a shell with elevated privileges, now we can find the root flag also</p>
+<p><img src="/images/sunset/12.webp" alt="id"></p>
+<p>And that is how you pawn the “sunset” machine, thank you and have a nice day.</p>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="https://medium.com/@pranavsuresh107/sunset-walkthrough-vulnhub-f13aad625c6f">Medium Story</a> - same story in medium</li>
+<li><a href="/projects">My projects</a> — tools I have built</li>
+<li><a href="/experience">Experience</a> — my background</li>
+</ul>
+
+
+      </article>
+
+      <aside id="appearance-panel">
+        <div class="appearance-box">
+          <div class="appearance-title">Appearance <button onclick="toggleAppearance()" id="app-toggle">hide</button></div>
+          <div id="appearance-body">
+            <div class="app-section-label">Text</div>
+            <div class="app-options">
+              <label class="app-option"><input type="radio" name="text-size" value="small" onchange="setTextSize(this.value)"> Small</label>
+              <label class="app-option"><input type="radio" name="text-size" value="standard" checked onchange="setTextSize(this.value)"> Standard</label>
+              <label class="app-option"><input type="radio" name="text-size" value="large" onchange="setTextSize(this.value)"> Large</label>
+            </div>
+            <div class="app-section-label">Width</div>
+            <div class="app-options">
+              <label class="app-option"><input type="radio" name="width" value="standard" checked onchange="setWidth(this.value)"> Standard</label>
+              <label class="app-option"><input type="radio" name="width" value="wide" onchange="setWidth(this.value)"> Wide</label>
+            </div>
+            <div class="app-section-label">Color</div>
+            <div class="app-options">
+	      <label class="app-option"><input type="radio" name="color" value="light" checked onchange="setColor(this.value)"> Light</label>
+              <label class="app-option"><input type="radio" name="color" value="auto" onchange="setColor(this.value)"> Grey</label>
+              <label class="app-option"><input type="radio" name="color" value="dark" onchange="setColor(this.value)"> Black</label>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<footer id="footer">
+  <span>This page was last edited on 18 June 2025.</span>
+  <span>
+    <a href="#">Source on GitHub</a>
+  </span>
+</footer>
+
+<script>
+function toggleToc() {
+  var body = document.getElementById('toc-body');
+  var btn = document.getElementById('toc-toggle');
+  if (body.style.display === 'none') {
+    body.style.display = '';
+    btn.textContent = 'hide';
+  } else {
+    body.style.display = 'none';
+    btn.textContent = 'show';
+  }
+}
+function toggleAppearance() {
+  var body = document.getElementById('appearance-body');
+  var btn = document.getElementById('app-toggle');
+  if (body.style.display === 'none') {
+    body.style.display = '';
+    btn.textContent = 'hide';
+  } else {
+    body.style.display = 'none';
+    btn.textContent = 'show';
+  }
+}
+function setTextSize(size) {
+  document.body.classList.remove('text-small', 'text-standard', 'text-large');
+  document.body.classList.add('text-' + size);
+  localStorage.setItem('text-size', size);
+}
+function setWidth(width) {
+  document.body.classList.remove('width-standard', 'width-wide');
+  document.body.classList.add('width-' + width);
+  localStorage.setItem('width', width);
+}
+function setColor(color) {
+  document.body.classList.remove('skin-light', 'skin-dark', 'skin-auto');
+  document.body.classList.add('skin-' + color);
+  localStorage.setItem('color', color);
+}
+(function() {
+  var size = localStorage.getItem('text-size');
+  var width = localStorage.getItem('width');
+  var color = localStorage.getItem('color');
+  if (size) { setTextSize(size); document.querySelector('input[value="' + size + '"][name="text-size"]').checked = true; }
+  if (width) { setWidth(width); document.querySelector('input[value="' + width + '"][name="width"]').checked = true; }
+  if (color) { setColor(color); document.querySelector('input[value="' + color + '"][name="color"]').checked = true; }
+})();
+</script>
+
+</body>
+</html>

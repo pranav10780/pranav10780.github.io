@@ -1,0 +1,13 @@
+{{ define "main" }}
+  <div class="post-meta">
+    <span class="post-date">{{ .Date.Format "2 January 2006" }}</span>
+    {{ with .Params.tags }}
+      <span class="post-tags">
+        {{ range . }}
+          <span class="post-tag">{{ . }}</span>
+        {{ end }}
+      </span>
+    {{ end }}
+  </div>
+  {{ .Content }}
+{{ end }}

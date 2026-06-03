@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Investigating Windows — TryHackMe</title>
+<link rel="stylesheet" href="/css/wiki.css">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+</head>
+<body class="skin-light text-standard width-standard">
+
+<nav id="topnav">
+  <div id="topnav-inner">
+    <span id="site-logo">Personal Wiki of Pranav</span>
+    <div class="topnav-links">
+      <a href="/" >Main Page</a>
+      <a href="/projects" >Projects</a>
+      <a href="/experience" >Experience</a>
+      <a href="/blog" class="active">Blog</a>
+      <a href="/contact" >Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div id="subnav">
+  <div id="subnav-inner">
+  </div>
+</div>
+
+<div id="main">
+
+  <aside id="sidebar">
+    <div class="toc-box">
+      <div class="toc-title">Contents <button id="toc-toggle" onclick="toggleToc()">hide</button></div>
+      <div id="toc-body">
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#see-also">See also</a></li>
+  </ul>
+</nav>
+      </div>
+    </div>
+  </aside>
+
+  <div id="article-wrap">
+
+      <div id="breadcrumb">
+        
+          <a href="/">Main Page</a>
+          <span class="breadcrumb-sep">›</span>
+          <a href="/blog">Blog</a>
+          <span class="breadcrumb-sep">›</span>
+          <span class="breadcrumb-cur">Investigating Windows — TryHackMe</span>
+        
+      </div>
+
+    <div id="content-row">
+
+      <article id="content">
+        <h1 id="article-title">Investigating Windows — TryHackMe</h1>
+	<p class="article-subtitle">From <a href="https://github.com/pranav10780">pranav10780</a></p>
+        
+  <div class="post-meta">
+    <span class="post-date">12 July 2025</span>
+    
+      <span class="post-tags">
+        
+          <span class="post-tag">windows</span>
+        
+          <span class="post-tag">tryhackme</span>
+        
+          <span class="post-tag">blue team</span>
+        
+      </span>
+    
+  </div>
+  <p>This is a blue team based lab where you have to answer the questions given below in a windows machine</p>
+<p><strong>1.Whats the version and year of the windows machine?</strong></p>
+<p>We can open command prompt and run the command</p>
+<p><code>&gt; systeminfo</code></p>
+<blockquote>
+<p>NOTE: It may take a few seconds to show the results</p>
+</blockquote>
+<p><img src="/images/windows/1.webp" alt="systeminfo"></p>
+<p><strong>Ans: Windows Server 2016</strong></p>
+<p><strong>2.Which user logged in last?</strong></p>
+<p>We can see this info using event viewer in windows. We need to select the security log under the windows logs section.</p>
+<p><img src="/images/windows/2.webp" alt="logs"></p>
+<p>As you can see there are several different logs inside here, we need to filter only the login logs. We can easily do this by filtering for a specific event id</p>
+<p><img src="/images/windows/3.webp" alt="evid">
+<img src="/images/windows/4.webp" alt="evid">
+<img src="/images/windows/5.webp" alt="evid"></p>
+<blockquote>
+<p>NOTE: Since the machine was started today i will ignore the logs dated 2025 and instead focused on the 2019 logs</p>
+</blockquote>
+<p>As you can see the last person to login to the computer (other than us today) was administrator</p>
+<p><strong>ANS: Administrator</strong></p>
+<p><strong>3.When did John log onto the system last?</strong></p>
+<p>We can filter for John login by entering John in the find menu</p>
+<p><img src="/images/windows/6.webp" alt="john">
+<img src="/images/windows/7.webp" alt="john"></p>
+<p><strong>ANS: 03/02/2019 5:48:32 PM</strong></p>
+<p><strong>4.What IP does the system connect to when it first starts?</strong></p>
+<p>I think that we should check the startup apps to look for the answer inside the system information</p>
+<p><img src="/images/windows/8.webp" alt="startup"></p>
+<p><strong>ANS: 10.34.2.3</strong></p>
+<p><strong>5.What two accounts had administrative privileges (other than the Administrator user)?</strong></p>
+<p>We can easily see this information in the computer managment</p>
+<p>Computer Managment &gt; Local User and Groups &gt; Groups &gt; Administrators&gt; Properties</p>
+<p><img src="/images/windows/9.webp" alt="admin"></p>
+<p><strong>ANS: Guest, Jenny</strong></p>
+<p><strong>6.Whats the name of the scheduled task that is malicous.</strong></p>
+<p>We can easily see this under the task sheduler</p>
+<p><img src="/images/windows/10.webp" alt="task"></p>
+<p>We can see that this Clean file system is trying to run a script on port 1348 so it is malicious</p>
+<p><strong>ANS: Clean file system</strong></p>
+<p><strong>7.What file was the task trying to run daily?</strong></p>
+<p>We have already got the answer to this question in the previous screen shot</p>
+<p><strong>ANS: nc.ps1</strong></p>
+<p><strong>8.What port did this file listen locally for?</strong></p>
+<p>Again this answer can be found in the previous screen shot</p>
+<p><strong>ANS: 1348</strong></p>
+<p><strong>9.When did Jenny last logon?</strong></p>
+<p>We can use the previous method of filtering for 4624(login event id) and then search for jenny</p>
+<p><img src="/images/windows/11.webp" alt="evid"></p>
+<p>We get an error saying that there were no matches for jenny in the event viewer so we can conclude that she has never logged in the system</p>
+<p><strong>ANS: Never</strong></p>
+<p><strong>10.At what date did the compromise take place?</strong></p>
+<p>We can safely assume this based on when jenny was created, we can see this in command prompt</p>
+<p><code>&gt; net user Jenny</code></p>
+<p><img src="/images/windows/12.webp" alt="jenny"></p>
+<p><strong>ANS: 03/02/2019</strong></p>
+<p><strong>11.During the compromise, at what time did Windows first assign special privileges to a new logon?</strong></p>
+<p>See can see this using event viewer</p>
+<p><img src="/images/windows/13.webp" alt="logon"></p>
+<p>We can filter for what happed on the day of compromise and specific event ids to determine when a privileage in elevated, user created, special priviileages to new logon, and a logon using explicit credentials</p>
+<p><img src="/images/windows/14.webp" alt="privileage"></p>
+<p>We can see that on the specific log a lot of privileages are given</p>
+<p><strong>ANS: 03/02/2019 4:04:49 PM</strong></p>
+<p><strong>12.What tool was used to get Windows passwords?</strong></p>
+<p>Since we already the saw a malicious file like nc.ps1 in the tmp folder lets check there</p>
+<p><img src="/images/windows/15.webp" alt="tmp">
+<img src="/images/windows/16.webp" alt="tmp"></p>
+<p><strong>ANS: Mimikatz</strong></p>
+<p><strong>13.What was the attackers external control and command servers IP?</strong></p>
+<p>Lets check the hosts file which acts as a local dns for the computer</p>
+<p><img src="/images/windows/17.webp" alt="hosts"></p>
+<p>We can see that a dns poisoning has occured and the ip address of google.com has been changed</p>
+<p><strong>Ans: 76.32.97.132</strong></p>
+<p><strong>14.What was the extension name of the shell uploaded via the servers website?</strong></p>
+<p>For the web server files we need to check the inetpub folder</p>
+<p><img src="/images/windows/18.webp" alt="inet"></p>
+<p>We can the file extension</p>
+<p><strong>ANS: .jsp</strong></p>
+<p><strong>15.What was the last port the attacker opened?</strong></p>
+<p>We can check inside the firewall settings to see the answer</p>
+<p><img src="/images/windows/19.webp" alt="firewall"></p>
+<p>We can see a suspicious inbound rule called “Allow outside connections for development”, when we check the properties we get the answer</p>
+<p><strong>ANS: 1337</strong></p>
+<p><strong>16.Check for DNS poisoning, what site was targeted?</strong></p>
+<p>We have already got the answer in the previous questions</p>
+<p><strong>ANS: google.com</strong></p>
+<h2 id="see-also">See also</h2>
+<ul>
+<li><a href="https://medium.com/@pranavsuresh107/investigating-windows-tryhackme-febad3207308">Medium Story</a> - same story in medium</li>
+<li><a href="/projects">My projects</a> — tools I have built</li>
+<li><a href="/experience">Experience</a> — my background</li>
+</ul>
+
+
+      </article>
+
+      <aside id="appearance-panel">
+        <div class="appearance-box">
+          <div class="appearance-title">Appearance <button onclick="toggleAppearance()" id="app-toggle">hide</button></div>
+          <div id="appearance-body">
+            <div class="app-section-label">Text</div>
+            <div class="app-options">
+              <label class="app-option"><input type="radio" name="text-size" value="small" onchange="setTextSize(this.value)"> Small</label>
+              <label class="app-option"><input type="radio" name="text-size" value="standard" checked onchange="setTextSize(this.value)"> Standard</label>
+              <label class="app-option"><input type="radio" name="text-size" value="large" onchange="setTextSize(this.value)"> Large</label>
+            </div>
+            <div class="app-section-label">Width</div>
+            <div class="app-options">
+              <label class="app-option"><input type="radio" name="width" value="standard" checked onchange="setWidth(this.value)"> Standard</label>
+              <label class="app-option"><input type="radio" name="width" value="wide" onchange="setWidth(this.value)"> Wide</label>
+            </div>
+            <div class="app-section-label">Color</div>
+            <div class="app-options">
+	      <label class="app-option"><input type="radio" name="color" value="light" checked onchange="setColor(this.value)"> Light</label>
+              <label class="app-option"><input type="radio" name="color" value="auto" onchange="setColor(this.value)"> Grey</label>
+              <label class="app-option"><input type="radio" name="color" value="dark" onchange="setColor(this.value)"> Black</label>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</div>
+
+<footer id="footer">
+  <span>This page was last edited on 12 July 2025.</span>
+  <span>
+    <a href="#">Source on GitHub</a>
+  </span>
+</footer>
+
+<script>
+function toggleToc() {
+  var body = document.getElementById('toc-body');
+  var btn = document.getElementById('toc-toggle');
+  if (body.style.display === 'none') {
+    body.style.display = '';
+    btn.textContent = 'hide';
+  } else {
+    body.style.display = 'none';
+    btn.textContent = 'show';
+  }
+}
+function toggleAppearance() {
+  var body = document.getElementById('appearance-body');
+  var btn = document.getElementById('app-toggle');
+  if (body.style.display === 'none') {
+    body.style.display = '';
+    btn.textContent = 'hide';
+  } else {
+    body.style.display = 'none';
+    btn.textContent = 'show';
+  }
+}
+function setTextSize(size) {
+  document.body.classList.remove('text-small', 'text-standard', 'text-large');
+  document.body.classList.add('text-' + size);
+  localStorage.setItem('text-size', size);
+}
+function setWidth(width) {
+  document.body.classList.remove('width-standard', 'width-wide');
+  document.body.classList.add('width-' + width);
+  localStorage.setItem('width', width);
+}
+function setColor(color) {
+  document.body.classList.remove('skin-light', 'skin-dark', 'skin-auto');
+  document.body.classList.add('skin-' + color);
+  localStorage.setItem('color', color);
+}
+(function() {
+  var size = localStorage.getItem('text-size');
+  var width = localStorage.getItem('width');
+  var color = localStorage.getItem('color');
+  if (size) { setTextSize(size); document.querySelector('input[value="' + size + '"][name="text-size"]').checked = true; }
+  if (width) { setWidth(width); document.querySelector('input[value="' + width + '"][name="width"]').checked = true; }
+  if (color) { setColor(color); document.querySelector('input[value="' + color + '"][name="color"]').checked = true; }
+})();
+</script>
+
+</body>
+</html>

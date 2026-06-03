@@ -1,0 +1,30 @@
+{{ define "main" }}
+  {{ .Content }}
+
+  {{ if .Pages }}
+    <table class="post-list">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Title</th>
+          <th>Tags</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{ range .Pages }}
+        <tr>
+          <td class="post-list-date">{{ .Date.Format "2006-01-02" }}</td>
+          <td><a href="{{ .Permalink }}">{{ .Title }}</a></td>
+          <td>
+            {{ range .Params.tags }}
+              <span class="post-tag">{{ . }}</span>
+            {{ end }}
+          </td>
+        </tr>
+        {{ end }}
+      </tbody>
+    </table>
+  {{ else }}
+    <p>No posts yet.</p>
+  {{ end }}
+{{ end }}

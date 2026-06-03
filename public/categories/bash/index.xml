@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Bash on Personal Wiki</title>
+		<link>http://localhost:1313/categories/bash/</link>
+		<description>Recent content in Bash on Personal Wiki</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 01 Jun 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/categories/bash/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Projects</title>
+				<link>http://localhost:1313/projects/</link>
+				<pubDate>Mon, 01 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/projects/</guid>
+				<description>&lt;p&gt;Open source and personal projects by &lt;a href=&#34;http://localhost:1313/&#34;&gt;Pranav Suresh&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;personal-projects&#34;&gt;Personal Projects&lt;/h2&gt;&#xA;&lt;h3 id=&#34;password-checker&#34;&gt;Password Checker&lt;/h3&gt;&#xA;&lt;p&gt;A simple command line tool which takes a password from the command line and&#xA;assesses its strength. Written in C with no known bugs or vulnerabilities.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;&#x9;&lt;thead&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Detail&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;th&gt;Value&lt;/th&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/thead&gt;&#xA;&#x9;&lt;tbody&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Language&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;C&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Tools&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Git, Make, XML, JSON&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&#x9;&#x9;&lt;tr&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;Repository&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&#x9;&#x9;&lt;td&gt;&lt;a href=&#34;https://github.com/pranav10780/password_checker&#34;&gt;github.com/pranav10780/password_checker&lt;/a&gt;&lt;/td&gt;&#xA;&#x9;&#x9;&#x9;&lt;/tr&gt;&#xA;&#x9;&lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;open-source-contributions&#34;&gt;Open Source Contributions&lt;/h2&gt;&#xA;&lt;h3 id=&#34;termux-packages&#34;&gt;Termux-packages&lt;/h3&gt;&#xA;&lt;p&gt;Termux-packages is a package build system for Termux. Contributed to updating&#xA;old packages such as graphviz, groonga, and others.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

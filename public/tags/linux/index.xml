@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Linux on Personal Wiki</title>
+		<link>http://localhost:1313/tags/linux/</link>
+		<description>Recent content in Linux on Personal Wiki</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Thu, 19 Jun 2025 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Lookup</title>
+				<link>http://localhost:1313/blog/lookup/</link>
+				<pubDate>Thu, 19 Jun 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/blog/lookup/</guid>
+				<description>&lt;p&gt;Test your enumeration skills on this boot-to-root machine.&lt;/p&gt;&#xA;&lt;p&gt;This is an easy machine, lets start of by scanning the machine using nmap&lt;/p&gt;&#xA;&lt;h2 id=&#34;reconnaissance&#34;&gt;Reconnaissance&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;&amp;gt; nmap [ip addr]&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/lookup/1.webp&#34; alt=&#34;nmap&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;We can see that it has 2 ports open, now lets take a closer look at&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;&amp;gt; nmap [ip addr] -p 22,80 -A&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/lookup/2.webp&#34; alt=&#34;nmap&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;After a little bit of investigation you can find that there is no known vulnerabilities which target &lt;code&gt;OpenSSH 8.2p1&lt;/code&gt; and &lt;code&gt;Apache 2.4.41&lt;/code&gt; so we might wanna take a look at the site itself&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>HF 2019-Linux</title>
+				<link>http://localhost:1313/blog/hf-2019-linux/</link>
+				<pubDate>Wed, 18 Jun 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/blog/hf-2019-linux/</guid>
+				<description>&lt;p&gt;We are going to try to break into HF 2019-Linux machine which can be downloaded &lt;a href=&#34;https://www.vulnhub.com/entry/hacker-fest-2019,378/&#34;&gt;here&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Let start off by basic scanning using nmap&lt;/p&gt;&#xA;&lt;h2 id=&#34;reconnaissance&#34;&gt;Reconnaissance&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;&amp;gt; nmap [ip addr]&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/hf2019/1.webp&#34; alt=&#34;nmap&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;We can see that there is 4 ports available in this machine, now lets take a closer look at the ports&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;&amp;gt; nmap [ip addr] -p 21,22,80,10000 -A&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/hf2019/2.webp&#34; alt=&#34;nmap_advanced&#34;&gt;&#xA;&lt;img src=&#34;http://localhost:1313/images/hf2019/3.webp&#34; alt=&#34;nmap_advanced&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;We can see that there are a lot of files in the ftp server available for us, in order to download all the files available in the server we can use wget&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Sunset Walkthrough - Vulnhub</title>
+				<link>http://localhost:1313/blog/sunset-walkthrough-vulnhub/</link>
+				<pubDate>Wed, 18 Jun 2025 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/blog/sunset-walkthrough-vulnhub/</guid>
+				<description>&lt;p&gt;Sunset is crafted by the Whitecr0wz. This blog provides information on how to&#xA;exploit the underlaying vulnerabilities in sunset machine&lt;/p&gt;&#xA;&lt;p&gt;You can also easily download sunset through &lt;a href=&#34;https://www.vulnhub.com/entry/sunset-1,339/&#34;&gt;vulnhub&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;First we need to take a look at the available ports on the machine by port scanning using nmap&lt;/p&gt;&#xA;&lt;h2 id=&#34;reconnaissance&#34;&gt;Reconnaissance&lt;/h2&gt;&#xA;&lt;p&gt;&lt;code&gt;&amp;gt; nmap [ip addr]&lt;/code&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;http://localhost:1313/images/sunset/1.webp&#34; alt=&#34;nmap scan&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;This show that the machine has 2 ports open, lets scan for more info&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;&amp;gt; nmap [ip addr] -p 21,22 -A&lt;/code&gt;&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>Why Linux</title>
+				<link>http://localhost:1313/blog/why-linux/</link>
+				<pubDate>Tue, 17 Jul 2007 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/blog/why-linux/</guid>
+				<description>&lt;p&gt;Linux is the foundation of almost everything interesting in computing —&#xA;servers, Android, embedded systems, and most of the open source world runs on it.&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-linux&#34;&gt;Why Linux&lt;/h2&gt;&#xA;&lt;p&gt;After switching from Windows I noticed a few things immediately. The terminal&#xA;is actually useful. Software installation is one command. The system does what&#xA;you tell it to do rather than the other way around.&lt;/p&gt;&#xA;&lt;h2 id=&#34;where-to-start&#34;&gt;Where to start&lt;/h2&gt;&#xA;&lt;p&gt;If you have never used Linux before, start with a distribution that has good&#xA;documentation and a large community. Arch Linux is not the place to start —&#xA;but the &lt;a href=&#34;https://wiki.archlinux.org&#34;&gt;ArchWiki&lt;/a&gt; is useful regardless of which&#xA;distribution you use.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>

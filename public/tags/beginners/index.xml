@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+	<channel>
+		<title>Beginners on Personal Wiki</title>
+		<link>http://localhost:1313/tags/beginners/</link>
+		<description>Recent content in Beginners on Personal Wiki</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 01 Jun 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="http://localhost:1313/tags/beginners/index.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Why Linux</title>
+				<link>http://localhost:1313/blog/why-linux/</link>
+				<pubDate>Mon, 01 Jun 2026 00:00:00 +0000</pubDate>
+				<guid>http://localhost:1313/blog/why-linux/</guid>
+				<description>&lt;p&gt;Linux is the foundation of almost everything interesting in computing —&#xA;servers, Android, embedded systems, and most of the open source world runs on it.&lt;/p&gt;&#xA;&lt;h2 id=&#34;why-linux&#34;&gt;Why Linux&lt;/h2&gt;&#xA;&lt;p&gt;After switching from Windows I noticed a few things immediately. The terminal&#xA;is actually useful. Software installation is one command. The system does what&#xA;you tell it to do rather than the other way around.&lt;/p&gt;&#xA;&lt;h2 id=&#34;where-to-start&#34;&gt;Where to start&lt;/h2&gt;&#xA;&lt;p&gt;If you have never used Linux before, start with a distribution that has good&#xA;documentation and a large community. Arch Linux is not the place to start —&#xA;but the &lt;a href=&#34;https://wiki.archlinux.org&#34;&gt;ArchWiki&lt;/a&gt; is useful regardless of which&#xA;distribution you use.&lt;/p&gt;</description>
+			</item>
+	</channel>
+</rss>
