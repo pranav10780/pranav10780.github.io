@@ -18,6 +18,16 @@ assesses its strength. Written in C with no known bugs or vulnerabilities.
 | Tools | Git, Make, XML, JSON |
 | Link | [github.com](https://github.com/pranav10780/password_checker) |
 
+### Personal Website
+
+A website to showcase my projects and skills (this website)
+
+| Detail | Info |
+|---|---|
+| Language | md, css |
+| Tools | Git, Hugo |
+| Link | [github.com](https://github.com/pranav10780/pranav10780.github.io) |
+
 ## Open Source Contributions
 
 ### Termux-packages
