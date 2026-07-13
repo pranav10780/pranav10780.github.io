@@ -28,6 +28,16 @@ A website to showcase my projects and skills (this website)
 | Tools | Git, Hugo |
 | Link | [github.com](https://github.com/pranav10780/pranav10780.github.io) |
 
+### CryptMount
+
+A password-protected, encrypted loopback filesystem built with FUSE
+
+| Detail | Info |
+|---|---|
+| Language | python |
+| Tools | Argon2id, aes-256-gcm |
+| Link | [github.com](https://github.com/pranav10780/cryptmount) |
+
 ## Open Source Contributions
 
 ### Termux-packages
