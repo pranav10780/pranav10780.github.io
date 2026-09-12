@@ -12,7 +12,8 @@ We need to check the `C:\Users\BTLOTest\Desktop\Artefacts\DevEvidence\Triage\Use
 or if via wsl then the files is located at `/mnt/c/Users/BTLOTest/Desktop/Artefacts/DevEvidence/TriageFiles/UserInfo/whoami.txt`
 
 ```
-btlo@HammerInTheVault:~$ cat /mnt/c/Users/BTLOTest/Desktop/Artefacts/DevEvidence/TriageFiles/UserInfo/whoami.txtDESKTOP-T4SU469\Travis Bruce
+btlo@HammerInTheVault:~$ cat /mnt/c/Users/BTLOTest/Desktop/Artefacts/DevEvidence/TriageFiles/UserInfo/whoami.txt
+DESKTOP-T4SU469\Travis Bruce
 ```
 
 **Answer: `DESKTOP-T4SU469\Travis Bruce`**
@@ -26,23 +27,21 @@ Currently via volitility i have managed to figure out an cmd process is calling 
 ```
 btlo@HammerInTheVault:~/tools/volatility3$ python3 vol.py -f /mnt/c/Users/BTLOTest/Desktop/Artefacts/DevEvidence/case001-travisbruce.dmp windows.pstree > pstree.txt
 btlo@HammerInTheVault:~/tools/volatility3$ python3 vol.py -f /mnt/c/Users/BTLOTest/Desktop/Artefacts/DevEvidence/case001-travisbruce.dmp windows.cmdline > cmdline.txt
-
 btlo@HammerInTheVault:~/tools/volatility3$ grep -n "6352" pstree.txt cmdline.txt
-pstree.txt:201:3188     6352    cmd.exe 0xdd0af16e1080  1       -       3       False   2026-02-23 09:30:53.000000 UTC N/A                                                                                                                  \Device\HarddiskVolume2\Windows\System32\cmd.exe C:\Windows\system32\cmd.exe  /K call  "@@BITROCK_INSTALLDIR@@\killprocess.bat" "httpd.exe"                                                                                                  C:\Windows\system32\cmd.exe
+pstree.txt:201:3188     6352    cmd.exe 0xdd0af16e1080  1       -       3       False   2026-02-23 09:30:53.000000 UTC N/A   \Device\HarddiskVolume2\Windows\System32\cmd.exe C:\Windows\system32\cmd.exe  /K call  "@@BITROCK_INSTALLDIR@@\killprocess.bat" "httpd.exe"   C:\Windows\system32\cmd.exe
 ```
 
-As you can see we now need to find the process which has pid 6352 which is the parent processo of 3188 cmd
+As you can see we now need to find the process which has pid `6352` which is the parent process of `3188` cmd
 
 ```
 btlo@HammerInTheVault:~/tools/volatility3$ python3 vol.py -f /mnt/c/Users/BTLOTest/Desktop/Artefacts/DevEvidence/case001-travisbruce.dmp windows.psscan > psscan.txt
-
 btlo@HammerInTheVault:~/tools/volatility3$ cat psscan.txt | grep 63523188    6352    cmd.exe 0xdd0af16e1080  1       -       3       False   2026-02-23 09:30:53.000000 UTC  N/A     Disabled
 ```
 
-We are unfourtunately not able to find the process associated to 6352, now lets check the logs again.
+We are unfourtunately not able to find the process associated to `6352`, now lets check the logs again.
 
 ```
-btlo@hammerinthevault:/mnt/c/Users/BTLOTest/Desktop/Artefacts/DevEvidence/TriageFiles/BasicInfo$ jobs[1]+  Stopped                 grep --color=auto -n "6352" > 6352.txt
+btlo@hammerinthevault:/mnt/c/Users/BTLOTest/Desktop/Artefacts/DevEvidence/TriageFiles/BasicInfo$ jobs[1]+  Stopped   grep --color=auto -n "6352" > 6352.txt
 btlo@HammerInTheVault:/mnt/c/Users/BTLOTest/Desktop/Artefacts/DevEvidence/TriageFiles/BasicInfo$ cat 6352.txt
 ```
 As u can see i was mistaked and followed the wrong lead hope you can learn from this, back to the logs we gooooo.
@@ -51,12 +50,12 @@ The logs went nowhere so i decided to check the memory dumps again.
 
 ```
 btlo@hammerinthevault:~/tools/volatility3$ grep -in "Public\\\\Music\|Public\\\\Videos\|Public\\\\Pictures\|\\\\Temp\\\\\|\\\\AppData\\\\Local\\\\Temp" pstree.txt cmdline.txt
-pstree.txt:79:***** 12596       2836    _uninstall2836  0xdd0af7e14340  0       -       3       False   2026-02-23 08:57:45.000000 UTC                                                                                                      2026-02-24 07:42:19.000000 UTC   \Device\HarddiskVolume2\Users\TRAVIS~1\AppData\Local\Temp\_uninstall931BB399\_uninstall2836.000                                                                                                             --
-pstree.txt:223:5080     3332    activesyncx86.  0xdd0af0b8c2c0  0       -       3       False   2026-02-26 11:03:30.000000 UTC                                                                                                              2026-02-26 11:20:45.000000 UTC   \Device\HarddiskVolume2\Users\Public\Music\activesyncx86.exe    -       -
-pstree.txt:226:*** 3664 896     sdel.exe        0xdd0af39dc300  0       -       3       False   2026-02-26 11:21:42.000000 UTC                                                                                                              2026-02-26 11:21:42.000000 UTC   \Device\HarddiskVolume2\Users\Public\Music\sdel.exe     -       -
+pstree.txt:79:***** 12596   2836    _uninstall2836  0xdd0af7e14340  0       -       3       False   2026-02-23 08:57:45.000000 UTC   2026-02-24 07:42:19.000000 UTC   \Device\HarddiskVolume2\Users\TRAVIS~1\AppData\Local\Temp\_uninstall931BB399\_uninstall2836.000   --
+pstree.txt:223:     5080    3332    activesyncx86.  0xdd0af0b8c2c0  0       -       3       False   2026-02-26 11:03:30.000000 UTC   2026-02-26 11:20:45.000000 UTC   \Device\HarddiskVolume2\Users\Public\Music\activesyncx86.exe    -       -
+pstree.txt:226:***  3664    896     sdel.exe        0xdd0af39dc300  0       -       3       False   2026-02-26 11:21:42.000000 UTC   2026-02-26 11:21:42.000000 UTC   \Device\HarddiskVolume2\Users\Public\Music\sdel.exe     -       -
 ```
 
-We can see that `activesyncx` is a microsoft syncronisation protocol but its file location is in Music directory which is abnormal so it is trying to hide as a legitimate microsoft service, the process `sdel.exe` is also run from the same directory, coincidence, I THINK NOT.
+We can see that `activesyncx` is a microsoft syncronisation protocol but its file location is in Music directory which is abnormal so it is trying to hide as a legitimate microsoft service, the process `sdel.exe` is also run from the same directory, ***coincidence, I THINK NOT.***
 
 **Answer: `activesyncx86.exe:5080`**
 
@@ -66,10 +65,10 @@ Before we try to find the parent process fo `activesyncx86` i would like to map 
 
 ```
 btlo@HammerInTheVault:~/tools/volatility3$ grep -n -A10 "activesyncx86.exe" pstree.txt
-223:5080        3332    activesyncx86.  0xdd0af0b8c2c0  0       -       3       False   2026-02-26 11:03:30.000000 UTC 2026-02-26 11:20:45.000000 UTC                                                                                       \Device\HarddiskVolume2\Users\Public\Music\activesyncx86.exe     -       -
-224-* 9912      5080    dllhost.exe     0xdd0af3341080  24      -       3       False   2026-02-26 11:14:14.000000 UTC N/A                                                                                                                  \Device\HarddiskVolume2\Windows\System32\dllhost.exe     C:\Windows\System32\dllhost.exe C:\Windows\System32\dllhost.exe
-225-** 896      9912    cmd.exe 0xdd0af1bf3340  0       -       3       False   2026-02-26 11:21:42.000000 UTC  2026-02-26 11:21:42.000000 UTC                                                                                              \Device\HarddiskVolume2\Windows\System32\cmd.exe -       -
-226-*** 3664    896     sdel.exe        0xdd0af39dc300  0       -       3       False   2026-02-26 11:21:42.000000 UTC 2026-02-26 11:21:42.000000 UTC                                                                                       \Device\HarddiskVolume2\Users\Public\Music\sdel.exe      -       -
+223:5080        3332    activesyncx86.  0xdd0af0b8c2c0  0       -       3       False   2026-02-26 11:03:30.000000 UTC 2026-02-26 11:20:45.000000 UTC   \Device\HarddiskVolume2\Users\Public\Music\activesyncx86.exe     -       -
+224-* 9912      5080    dllhost.exe     0xdd0af3341080  24      -       3       False   2026-02-26 11:14:14.000000 UTC N/A                              \Device\HarddiskVolume2\Windows\System32\dllhost.exe     C:\Windows\System32\dllhost.exe C:\Windows\System32\dllhost.exe
+225-** 896      9912    cmd.exe 0xdd0af1bf3340  0       -       3       False   2026-02-26 11:21:42.000000 UTC  2026-02-26 11:21:42.000000 UTC          \Device\HarddiskVolume2\Windows\System32\cmd.exe -       -
+226-*** 3664    896     sdel.exe        0xdd0af39dc300  0       -       3       False   2026-02-26 11:21:42.000000 UTC 2026-02-26 11:21:42.000000 UTC   \Device\HarddiskVolume2\Users\Public\Music\sdel.exe      -       -
 --snip--
 ```
 
@@ -84,7 +83,7 @@ Now we get the connection between them, now we need to find this unknown program
 We first check the pstree.txt for any references
 
 ```
-btlo@HammerInTheVault:~/tools/volatility3$ grep "3332" pstree.txt  -n223:5080        3332    activesyncx86.  0xdd0af0b8c2c0  0       -       3       False   2026-02-26 11:03:30.000000 UTC 2026-02-26 11:20:45.000000 UTC                                                                                       \Device\HarddiskVolume2\Users\Public\Music\activesyncx86.exe     -       -
+btlo@HammerInTheVault:~/tools/volatility3$ grep "3332" pstree.txt  -n223:5080   3332   activesyncx86.   0xdd0af0b8c2c0   0   -   3   False   2026-02-26 11:03:30.000000 UTC 2026-02-26 11:20:45.000000 UTC   \Device\HarddiskVolume2\Users\Public\Music\activesyncx86.exe     -       -
 ```
 
 Since the pstree is a dead end lets try scanning the logs.
