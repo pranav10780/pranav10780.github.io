@@ -1,5 +1,5 @@
 ---
-title: Bruteforce Walkthrough - btlo
+title: Bruteforce - btlo
 date: 2026-09-08
 tags: ["linux", "logs", "basics"]
 ---

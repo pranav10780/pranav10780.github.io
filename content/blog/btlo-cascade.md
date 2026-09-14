@@ -1,5 +1,5 @@
 ---
-title: Cascade - BTLO
+title: Cascade - btlo
 date: 2026-09-12
 tags: ["linux", "btlo", "writeup"]
 ---

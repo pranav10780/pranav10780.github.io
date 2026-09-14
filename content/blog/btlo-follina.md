@@ -1,5 +1,5 @@
 ---
-title: Follina Walkthrough - btlo
+title: Follina - btlo
 date: 2026-09-02
 tags: ["linux", "osint", "malware"]
 ---
