@@ -62,28 +62,6 @@ translating existing docs to other languages (hindi/malayalam)
 | Tools | Terminal, tldr-lint |
 | Link | [github.com](https://github.com/tldr-pages/tldr) |
 
-## Roblox Projects
-
-### Cannon
-
-This is a beginner friendly cannon which you can use to fire at enemies at a distance which is placed on the ground and is rotatable. Uses projectile motion physics to fire the cannon and its rotation.
-
-| Detail | Info |
-|---|---|
-| Languages | Luau |
-| Tools | Roblox Studio |
-| Link | [roblox.com](https://www.roblox.com/games/103163444758336/mortar-system) |
-
-### Tic Tak Toe
-
-This game is entirely based on a gui version of tic tac toe which you can play with your friends, while others can spectate, focuses on client to server communication and gui interactions.
-
-| Detail | Info |
-|---|---|
-| Languages | Luau |
-| Tools | Roblox Studio |
-| Link | [roblox.com](https://www.roblox.com/games/111967320853106/tic-tak-toe) |
-
 ## See also
 
 - [Experience](/experience) — education and certifications

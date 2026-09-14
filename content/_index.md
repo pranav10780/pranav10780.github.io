@@ -20,6 +20,8 @@ security and open source software (OSS).
 
 | Skill | Category | Notes |
 |---|---|---|
+| C# | Programming | Used unity game engine |
+| Luau | Scripting | Used in roblox studio |
 | Python | Programming | Scripting, automation, tools |
 | C | Programming | Systems programming, CLI tools |
 | Bash | Scripting | Shell scripting, automation |
@@ -34,7 +36,6 @@ security and open source software (OSS).
 | Markdown | Documentation | Docs, README files |
 | Make | Build Tools | Build automation |
 | Networking | Infrastructure | General networking knowledge |
-| Luau | Scripting | Used in roblox studio |
 
 ## Soft Skills
 
@@ -59,8 +60,6 @@ security and open source software (OSS).
 
 ## Contact
 
-- **Resume:**[View pdf](/resume.pdf)
 - **Email:** [pranavsuresh107@gmail.com](mailto:pranavsuresh107@gmail.com)
 - **Phone:** +91 7012803981
 - **GitHub:** [pranav10780](https://github.com/pranav10780)
-- **LinkedIn:** [pranav10780](https://www.linkedin.com/in/pranav10780/)

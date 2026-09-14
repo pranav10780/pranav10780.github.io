@@ -3,25 +3,6 @@ title: "Experience"
 date: 2026-06-01
 ---
 
-Education and certifications of Pranav Suresh
-
-## Education
-
-### Bachelor of Computer Science
-**Marian College of Arts and Science** — 2025–2028
-
-Currently pursuing an undergraduate degree in Computer Science. Focused on
-cyber security, system administration, and open source software development.
-
----
-
-### High School Diploma
-**Sree Narayana Public School** — 2024
-
-Completed high school with a focus on computer science.
-
----
-
 ## Certifications
 
 ### OCSA — Offenso Certified Security Analyst
