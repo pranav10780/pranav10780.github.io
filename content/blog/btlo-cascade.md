@@ -1,6 +1,6 @@
 ---
 title: Cascade - btlo
-image: "images/cascade.png"
+image: "images/cover/cascade.png"
 description: "Memory and malware-analysis investigation of a infected github release."
 date: 2026-09-18
 tags: ["linux", "btlo", "writeup"]
