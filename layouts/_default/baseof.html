@@ -9,8 +9,9 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 
 {{/* --- Open Graph / Discord / Twitter preview tags --- */}}
-{{ $ogDesc := .Params.description | default (.Summary | plainify | truncate 160) | default "Personal wiki of Pranav Suresh" }}
+{{ $ogDesc := .Params.description | default (.Summary | plainify | truncate 120) | default "Personal wiki of Pranav Suresh" }}
 {{ $ogImage := .Params.image | default "images/default.jpg" | absURL }}
+<meta property="og:site_name" content="{{ $ogDesc }}">
 <meta property="og:title" content="{{ .Title }}">
 <meta property="og:description" content="{{ $ogDesc }}">
 <meta property="og:type" content="{{ if and (eq .Section "blog") .IsPage }}article{{ else }}website{{ end }}">
@@ -20,6 +21,7 @@
 <meta name="twitter:title" content="{{ .Title }}">
 <meta name="twitter:description" content="{{ $ogDesc }}">
 <meta name="twitter:image" content="{{ $ogImage }}">
+<meta name="description" content="{{ $ogDesc }}">
 </head>
 
 <body class="skin-light text-standard width-standard">
