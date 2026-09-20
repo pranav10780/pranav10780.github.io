@@ -4,6 +4,7 @@ date: 2026-09-18
 tags: ["linux", "btlo", "writeup"]
 ---
 
+Challenge link: [cascade](https://blueteamlabs.online/home/investigation/cascade-43a3729b32)
 ## Investigation Submission
 
 **1) What is the hostname of the affected machine? Who is the registered owner?**
