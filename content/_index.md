@@ -16,40 +16,13 @@ administration. Looking for a role where I can grow and learn from experienced
 cyber security analysts and other system administrators. Interested in cyber
 security and open source software (OSS).
 
-## Tech Skills
-
-| Skill | Category | Notes |
-|---|---|---|
-| C# | Programming | Used unity game engine |
-| Luau | Scripting | Used in roblox studio |
-| Python | Programming | Scripting, automation, tools |
-| C | Programming | Systems programming, CLI tools |
-| Bash | Scripting | Shell scripting, automation |
-| Git | Version Control | Daily driver for all projects |
-| GitHub | Version Control | Open source contributions |
-| Linux | Operating System | Primary OS, system administration |
-| Ubuntu | Operating System | Daily use distro |
-| Vim | Editor | Terminal editing |
-| Neovim | Editor | Primary code editor |
-| VS Code | Editor | Secondary editor |
-| Docker | Infrastructure | Containerisation |
-| Markdown | Documentation | Docs, README files |
-| Make | Build Tools | Build automation |
-| Networking | Infrastructure | General networking knowledge |
-
 ## Soft Skills
 
-- Teamwork
-- Speed typing
-- Effective Communication
-- Critical Thinking
-- Curiosity
+<p class="inline-list">Teamwork <span class="sep">|</span> Speed typing <span class="sep">|</span> Effective Communication <span class="sep">|</span> Critical Thinking <span class="sep">|</span> Curiosity</p>
 
 ## Languages
 
-- English
-- Malayalam
-- Hindi
+<p class="inline-list">English <span class="sep">|</span> Malayalam <span class="sep">|</span> Hindi </p>
 
 ## Hobbies
 
@@ -57,6 +30,13 @@ security and open source software (OSS).
 - Reading cyber vulnerabilities
 - Game development (roblox)
 - Photography
+
+## Tech Skills
+
+<div style="text-align:center; margin: 1.5rem 0;">
+  <!-- https://github.com/tandpfun/skill-icons/issues/1655#issuecomment-4062800784 -->
+  <img class="skill-strip" src="https://skills.syvixor.com/api/icons?i=bash,c,discord,docker,github,gmail,html,instagram,linux,md,mysql,neovim,php,powershell,py,stackoverflow,ubuntu,vim,vscode,windows,wordpress,termux&perline=11"/>
+</div>
 
 ## Contact
 

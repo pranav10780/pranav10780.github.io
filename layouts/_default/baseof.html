@@ -7,7 +7,21 @@
 <link rel="stylesheet" href="/css/wiki.css">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+
+{{/* --- Open Graph / Discord / Twitter preview tags --- */}}
+{{ $ogDesc := .Params.description | default (.Summary | plainify | truncate 160) | default "Personal wiki of Pranav Suresh" }}
+{{ $ogImage := .Params.image | default "images/default.jpg" | absURL }}
+<meta property="og:title" content="{{ .Title }}">
+<meta property="og:description" content="{{ $ogDesc }}">
+<meta property="og:type" content="{{ if and (eq .Section "blog") .IsPage }}article{{ else }}website{{ end }}">
+<meta property="og:url" content="{{ .Permalink }}">
+<meta property="og:image" content="{{ $ogImage }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ .Title }}">
+<meta name="twitter:description" content="{{ $ogDesc }}">
+<meta name="twitter:image" content="{{ $ogImage }}">
 </head>
+
 <body class="skin-light text-standard width-standard">
 
 <nav id="topnav">
@@ -60,7 +74,12 @@
     <div id="content-row">
 
       <article id="content">
-        <h1 id="article-title">{{ .Title }}</h1>
+	<div id="page-header-row">
+		<h1 id="article-title">{{ .Title }}</h1>
+		{{ if and (eq .Section "blog") (not .IsPage) }}
+		<input type="text" id="blog-search" class="blog-search-box" placeholder="Search posts by title or tag...">
+		{{ end }}
+	</div>
 	<p class="article-subtitle">From <a href="https://github.com/pranav10780">pranav10780</a></p>
         {{ block "main" . }}{{ end }}
       </article>
