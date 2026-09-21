@@ -12,23 +12,19 @@ fetch('/data/views.txt')
   .then(r => r.text())
   .then(text => {
     const lines = text.trim().split('\n').filter(Boolean);
-
     const dataMap = {};
     lines.forEach(line => {
       const [ymd, count] = line.split(' ');
       const dateStr = `20${ymd.slice(0,2)}-${ymd.slice(2,4)}-${ymd.slice(4,6)}`;
       dataMap[dateStr] = parseInt(count, 10);
     });
-
     const sortedDates = Object.keys(dataMap).sort();
     if (sortedDates.length === 0) {
       document.getElementById('viewsChart').outerHTML = '<p>No view data yet — check back soon.</p>';
       return;
     }
-
     const firstDate = new Date(sortedDates[0]);
     const lastDate = new Date(sortedDates[sortedDates.length - 1]);
-
     const labels = [];
     const counts = [];
     for (let d = new Date(firstDate); d <= lastDate; d.setDate(d.getDate() + 1)) {
@@ -36,7 +32,6 @@ fetch('/data/views.txt')
       labels.push(dateStr);
       counts.push(dataMap[dateStr] || 0);
     }
-
     const styles = getComputedStyle(document.body);
     const textMuted = styles.getPropertyValue('--text-muted').trim();
     const textColor = styles.getPropertyValue('--text').trim();
@@ -44,7 +39,6 @@ fetch('/data/views.txt')
     const gridColor = styles.getPropertyValue('--border').trim() + '33';
     const surfaceColor = styles.getPropertyValue('--surface').trim();
     const borderColor = styles.getPropertyValue('--border').trim();
-
     new Chart(document.getElementById('viewsChart'), {
       type: 'line',
       data: {
@@ -87,14 +81,14 @@ fetch('/data/views.txt')
           }
         },
         plugins: {
-          legend: { display: false },
-          tooltip: {
-            backgroundColor: surfaceColor,
-            titleColor: textColor,
-            bodyColor: textColor,
-            borderColor: borderColor,
-            borderWidth: 1
-          }
+            legend: { display: false },
+            tooltip: {
+                backgroundColor: surfaceColor,
+                titleColor: textColor,
+                bodyColor: textColor,
+                borderColor: borderColor,
+                borderWidth: 1
+            }
         }
       }
     });

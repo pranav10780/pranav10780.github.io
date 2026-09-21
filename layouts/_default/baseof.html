@@ -11,7 +11,7 @@
 {{/* --- Open Graph / Discord / Twitter preview tags --- */}}
 {{ $ogDesc := .Params.description | default (.Summary | plainify | truncate 120) | default "Personal wiki of Pranav Suresh" }}
 {{ $ogImage := .Params.image | default "images/default.jpg" | absURL }}
-<meta property="og:site_name" content="{{ $ogDesc }}">
+<meta property="og:site_name" content="Personal wiki of Pranav Suresh">
 <meta property="og:title" content="{{ .Title }}">
 <meta property="og:description" content="{{ $ogDesc }}">
 <meta property="og:type" content="{{ if and (eq .Section "blog") .IsPage }}article{{ else }}website{{ end }}">
