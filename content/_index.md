@@ -35,7 +35,7 @@ security and open source software (OSS).
 
 <div style="text-align:center; margin: 1.5rem 0;">
   <!-- https://github.com/tandpfun/skill-icons/issues/1655#issuecomment-4062800784 -->
-  <img class="skill-strip" src="https://skills.syvixor.com/api/icons?i=bash,c,discord,docker,github,gmail,html,instagram,linux,md,mysql,neovim,php,powershell,py,stackoverflow,ubuntu,vim,vscode,windows,wordpress,termux&perline=11"/>
+  <img class="skill-strip" src="https://skills.syvixor.com/api/icons?i=bash,c,discord,docker,github,gmail,html,instagram,linux,md,mysql,neovim,php,powershell,py,stackoverflow,ubuntu,vim,vscode,windows,wordpress,termux,lua,git,githubactions,githubpages,visualstudiocode,docker,markdown&perline=11"/>
 </div>
 
 ## Contact
