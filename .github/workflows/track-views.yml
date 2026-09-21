@@ -1,0 +1,34 @@
+name: Track page views
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch yesterday's views and log if nonzero
+        env:
+          GC_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
+        run: |
+          YESTERDAY=$(date -u -d "yesterday" +%Y-%m-%d)
+          RESPONSE=$(curl -s -H "Authorization: Bearer $GC_TOKEN" \
+            -H "Content-Type: application/json" \
+            "https://pranav10780.goatcounter.com/api/v0/stats/hits?start=$YESTERDAY&end=$YESTERDAY&daily=1")
+          COUNT=$(echo "$RESPONSE" | jq '[.hits[].stats[].count] | add // 0')
+          DATE=$(date -u -d "yesterday" +%y%m%d)
+          if [ "$COUNT" -gt 0 ]; then
+            echo "$DATE $COUNT" >> static/data/views.txt
+          fi
+
+      - name: Commit
+        run: |
+          git config user.name "github-actions"
+          git config user.email "actions@github.com"
+          git add static/data/views.txt
+          git diff --cached --quiet || git commit -m "Log view count for $(date -u +%y%m%d)"
+          git push
