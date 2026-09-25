@@ -1,25 +1,20 @@
 ---
 title: "Contact"
-date: 2026-06-01
+date: 2026-09-25
 ---
 
-How to reach Pranav Suresh
-
-## Email
-
-The best way to reach me is by email at
-[pranavsuresh107@gmail.com](mailto:pranavsuresh107@gmail.com).
-
-I typically respond within 48 hours on weekdays.
-
-## Contact Details
-
-| Platform | Link |
-|---|---|
-| Email | [pranavsuresh107@gmail.com](mailto:pranavsuresh107@gmail.com) |
-| GitHub | [github.com/pranav10780](https://github.com/pranav10780) |
-
-## See also
-
-- [Projects](/projects) — my work
-- [Experience](/experience) — my background
+```json
+{
+  "contact": {
+    "name": "Pranav Suresh",
+    "email": "pranavsuresh107@gmail.com",
+    "github": "https://github.com/pranav10780",
+    "response_time": "48_hours",
+    "preferred_method": "email"
+  },
+  "public_keys": {
+    "pgp_fingerprint": "26506C820EAE5ACC1586593B492458D336939953",
+    "pgp_keyserver": "hkps://keys.openpgp.org",
+    "direct_download": "https://pranav10780.github.io/pranav.asc"
+  }
+}

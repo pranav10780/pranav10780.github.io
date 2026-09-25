@@ -3,6 +3,33 @@ title: "Experience"
 date: 2026-06-01
 ---
 
+<style>
+  /* Structural man page layout */
+  .man-page h2 {
+    font-family: monospace;
+    font-size: 1.2em;
+    margin-top: 1.5em;
+    margin-bottom: 0.5em;
+    text-transform: uppercase;
+  }
+  .man-page p, .man-page ul {
+    font-family: monospace;
+    margin-left: 4ch;
+    line-height: 1.6;
+  }
+  .man-page .prompt {
+    font-family: monospace;
+    font-size: 1.4em;
+    margin-left: 0;
+    margin-bottom: 2em;
+  }
+  
+  /* Terminal Prompt Colors (Theme Aware) */
+  .term-user { color: var(--note-border); font-weight: bold; } 
+  .term-dir  { color: var(--link); font-weight: bold; } 
+  .term-cmd  { color: var(--text); } 
+</style>
+
 <div class="man-page">
 
 <p class="prompt"><span class="term-user">pranav@server</span>:<span class="term-dir">~</span>$ <span class="term-cmd">man experience.md</span></p>
