@@ -3,28 +3,35 @@ title: "Experience"
 date: 2026-06-01
 ---
 
-## Certifications
+```
+pranav@server:~$ cat experience.md
 
-### OCSA — Offenso Certified Security Analyst
-**Offenso Hackers Academy** — 2025
+NAME
+       pranav - Cyber security analyst and system administrator
 
-Certified in offensive security and penetration testing fundamentals by
-Offenso Hackers Academy.
+SYNOPSIS
+       Graduate computer science student specializing in open-source 
+       software, defensive operations, and systems programming.
 
-| Detail | Value |
-|---|---|
-| Issuer | Offenso Hackers Academy |
-| Year | 2025 |
-| Focus | Offensive Security, Penetration Testing |
+CERTIFICATIONS
+       OCSA — Offenso Certified Security Analyst
+       Offenso Hackers Academy, 2025
+       Focus: Offensive Security, Penetration Testing
 
-## Areas of Interest
+AREAS OF INTEREST
+       CYBER SECURITY
+           Reading CVEs, vulnerability research, and security tooling.
 
-| Area | Details |
-|---|---|
-| Cyber Security | Reading CVEs, vulnerability research, security tooling |
-| System Administration | Linux, networking, shell scripting |
-| Open Source | Active contributor to Termux-packages and personal projects |
-| Low-level Programming | C, Make, systems programming |
+       SYSTEM ADMINISTRATION
+           Linux environments, networking configuration, and shell 
+           scripting (Bash/Zsh).
+
+       OPEN SOURCE
+           Active contributor to Termux-packages.
+
+       LOW-LEVEL PROGRAMMING
+           C, Make, and systems-level programming.
+```
 
 ## See also
 
