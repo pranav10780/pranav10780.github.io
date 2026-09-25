@@ -19,11 +19,16 @@ jobs:
           GC_TOKEN: ${{ secrets.GOATCOUNTER_TOKEN }}
         run: |
           YESTERDAY=$(date -u -d "yesterday" +%Y-%m-%d)
+          START_TIME="${YESTERDAY}T00:00:00Z"
+          END_TIME="${YESTERDAY}T23:59:59Z"
+          
           RESPONSE=$(curl -s -H "Authorization: Bearer $GC_TOKEN" \
             -H "Content-Type: application/json" \
-            "https://pranav10780.goatcounter.com/api/v0/stats/hits?start=$YESTERDAY&end=$YESTERDAY&daily=1")
-          COUNT=$(echo "$RESPONSE" | jq '[.hits[].stats[].count] | add // 0')
+            "https://pranav10780.goatcounter.com/api/v0/stats/hits?start=$START_TIME&end=$END_TIME&daily=1")
+          
+          COUNT=$(echo "$RESPONSE" | jq '.total // 0')
           DATE=$(date -u -d "yesterday" +%y%m%d)
+          
           if [ "$COUNT" -gt 0 ]; then
             echo "$DATE $COUNT" >> static/data/views.txt
           fi
