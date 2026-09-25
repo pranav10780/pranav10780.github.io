@@ -125,6 +125,28 @@ body {
   max-width: 280px;
   flex-shrink: 0;
 }
+.man-page h2 {
+  font-family: monospace;
+  font-size: 1.2em;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+}
+.man-page p, .man-page ul {
+  font-family: monospace;
+  margin-left: 4ch; /* Automatically indents the text */
+  line-height: 1.6;
+}
+.man-page .prompt {
+  font-family: monospace;
+  font-size: 1.2em;
+  margin-left: 0; /* Keeps the terminal prompt flush left */
+  margin-bottom: 2em;
+}
+/* Terminal Prompt Colors for experience.md */
+.term-user { color: #4ade80; font-weight: bold; } /* Terminal Green */
+.term-dir  { color: #60a5fa; font-weight: bold; } /* Terminal Blue */
+.term-cmd  { color: inherit; }
 .topnav-links { display: flex; gap: 1rem; }
 .topnav-links a {
   color: var(--link);

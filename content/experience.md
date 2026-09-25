@@ -3,37 +3,36 @@ title: "Experience"
 date: 2026-06-01
 ---
 
-```
-pranav@server:~$ cat experience.md
+<div class="man-page">
 
-NAME
-       pranav - Cyber security analyst and system administrator
+<p class="prompt"><span class="term-user">pranav@server</span>:<span class="term-dir">~</span>$ <span class="term-cmd">man experience.md</span></p>
 
-SYNOPSIS
-       Graduate computer science student specializing in open-source 
-       software, defensive operations, and systems programming.
+## NAME
+pranav \- Cyber security analyst and system administrator
 
-CERTIFICATIONS
-       OCSA — Offenso Certified Security Analyst
-       Offenso Hackers Academy, 2025
-       Focus: Offensive Security, Penetration Testing
+## SYNOPSIS
+Graduate computer science student specializing in open-source software, defensive operations, and systems programming.
 
-AREAS OF INTEREST
-       CYBER SECURITY
-           Reading CVEs, vulnerability research, and security tooling.
+## CERTIFICATIONS
+**OCSA — Offenso Certified Security Analyst**<br>
+Offenso Hackers Academy, 2025<br>
+Focus: Offensive Security, Penetration Testing
 
-       SYSTEM ADMINISTRATION
-           Linux environments, networking configuration, and shell 
-           scripting (Bash/Zsh).
+## AREAS OF INTEREST
 
-       OPEN SOURCE
-           Active contributor to Termux-packages.
+**CYBER SECURITY**<br>
+Reading CVEs, vulnerability research, and security tooling.
 
-       LOW-LEVEL PROGRAMMING
-           C, Make, and systems-level programming.
-```
+**SYSTEM ADMINISTRATION**<br>
+Linux environments, networking configuration, and shell scripting (Bash/Zsh).
 
-## See also
+**OPEN SOURCE**<br>
+Active contributor to Termux-packages.
 
-- [Projects](/projects) — personal and open source work
-- [Contact](/contact) — get in touch
+**LOW-LEVEL PROGRAMMING**<br>
+C, Make, and systems-level programming.
+
+## SEE ALSO
+[projects(1)](/projects), [contact(1)](/contact)
+
+</div>
