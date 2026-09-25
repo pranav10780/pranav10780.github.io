@@ -17,7 +17,6 @@ I typically respond within 48 hours on weekdays.
 | Platform | Link |
 |---|---|
 | Email | [pranavsuresh107@gmail.com](mailto:pranavsuresh107@gmail.com) |
-| Phone | +91 7012803981 |
 | GitHub | [github.com/pranav10780](https://github.com/pranav10780) |
 
 ## See also

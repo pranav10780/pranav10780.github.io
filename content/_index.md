@@ -41,5 +41,4 @@ security and open source software (OSS).
 ## Contact
 
 - **Email:** [pranavsuresh107@gmail.com](mailto:pranavsuresh107@gmail.com)
-- **Phone:** +91 7012803981
 - **GitHub:** [pranav10780](https://github.com/pranav10780)
