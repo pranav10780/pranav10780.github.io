@@ -86,5 +86,6 @@ Thank you and have a nice day
 
 ## See also
 
+- [Github pr](https://github.com/termux/termux-packages/pull/31882) - the pull request
 - [My projects](/projects) — tools I have built
 - [Experience](/experience) — my background
