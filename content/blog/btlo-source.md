@@ -13,9 +13,9 @@ A vulnerability was identified in a widely used product. Download the challenge 
 
 > NOTE: The given zip file needs to be opened with password `btlo`
 
-## Challenge Submission
+## Question 1
 
-**1) What is the technology affected?**
+**What is the technology affected?**
 
 When we unzip the given file we can see it gives out 2 identically named file in different directories, lets check wheather they are the same file.
 
@@ -55,7 +55,9 @@ static zend_string *php_zlib_encode(const char *in_buf, size_t in_len, int encod
 
 **Answer: `php`**
 
-**2) Based on the list of vulnerability categories in the challenge scenario, which one describes the identified vulnerability?**
+## Question 2
+
+**Based on the list of vulnerability categories in the challenge scenario, which one describes the identified vulnerability?**
 
 After looking thorugh the source code for any sort of abnormalities i spot this.
 
@@ -93,13 +95,17 @@ The `zend_hash_str_find` function basically looks up elements in an dictionary/h
 
 **Answer: `command execution`**
 
-**3) See the corresponding commit. How many lines of code were added when the vulnerability was introduced?**
+## Question 3
+
+**See the corresponding commit. How many lines of code were added when the vulnerability was introduced?**
 
 By viewing the commit history of the `zlib.c` file and going to March 2021 we can see that there are 4 commits out of which 3 of them are just reverting the malicious code. [github](https://github.com/php/php-src/commit/c730aa26bd52829a49f2ad284b181b7e82a68d7d)
 
 **Answer: `11`**
 
-**4) What HTTP head is required to exploit the vulnerability?**
+## Question 4
+
+**What HTTP head is required to exploit the vulnerability?**
 
 I already explained how the malicious code works, via the `HTTP_USER_AGENTT` header
 

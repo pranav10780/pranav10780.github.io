@@ -7,9 +7,10 @@ tags: ["linux", "btlo", "writeup"]
 ---
 
 Challenge link: [cascade](https://blueteamlabs.online/home/investigation/cascade-43a3729b32)
-## Investigation Submission
 
-**1) What is the hostname of the affected machine? Who is the registered owner?**
+## Question 1 
+
+**What is the hostname of the affected machine? Who is the registered owner?**
 
 We need to check the `C:\Users\BTLOTest\Desktop\Artefacts\DevEvidence\Triage\UserInfo\whoami.txt`
 or if via wsl then the files is located at `/mnt/c/Users/BTLOTest/Desktop/Artefacts/DevEvidence/TriageFiles/UserInfo/whoami.txt`
@@ -21,7 +22,9 @@ DESKTOP-T4SU469\Travis Bruce
 
 **Answer: `DESKTOP-T4SU469\Travis Bruce`**
 
-**2) During the analysis of running processes, a suspicious process was discovered that is likely to represent the initial execution. What is the name and pid of this process?**
+## Question 2
+
+**During the analysis of running processes, a suspicious process was discovered that is likely to represent the initial execution. What is the name and pid of this process?**
 
 Yeah so not gonna lie this was way harder than i expected, i wasted lots of time analysing log files and eventually stumbled upon this in the memory dump `case001-travisbruce.dmp`.
 
@@ -42,7 +45,9 @@ We can see that `activesyncx` is a microsoft syncronisation protocol but its fil
 
 **Answer: `activesyncx86.exe:5080`**
 
-**3) From which root parent image was it triggered?**
+## Question 3
+
+**From which root parent image was it triggered?**
 
 Before we try to find the parent process for `activesyncx86` i would like to map out to process tree of `sdel.exe` and find the connection between them.
 
@@ -84,7 +89,9 @@ code.exe (1948) -> cmd.exe (3332) -> activesyncx86.exe (5080) -> dllhost.exe (99
 
 **Answer: `1948:Code.exe (Microsoft VS Code)`**
 
-**4) What file was downloaded after the installation was triggered? What is the server that hosted this file?**
+## Question 4
+
+**What file was downloaded after the installation was triggered? What is the server that hosted this file?**
 
 We can use the newly found pid `1948` to search in the sysmon logs.
 
@@ -94,7 +101,9 @@ We can see that curl was used to download the `XdaWgasSWf.exe` as `activesync-up
 
 **Answer: `C:\Users\Public\Music\XdaWgasSWf.exe, http://167.172.74.103/sync/data/activesync-updater.exe`**
 
-**5) Which installation triggered the initial access on the dev workstation?**
+## Question 5
+
+**Which installation triggered the initial access on the dev workstation?**
 
 Looking around the logs near the time stamp of 11:03:27.944, we will eventually find that vscode is uses `vsce-sign.exe` to verify and installed package.
 
@@ -104,7 +113,9 @@ We can see that it ran at the same time as the curl command at 11:03:27.164 tryi
 
 **Answer: `claudecode-assist`**
 
-**6) What persistence mechanism was established?**
+## Question 6
+
+**What persistence mechanism was established?**
 
 Looking thorugh the logs again using `1948` we can see that it spawned and new cmd process.
 

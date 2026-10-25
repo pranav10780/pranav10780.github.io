@@ -17,9 +17,9 @@ curl -LO https://blueteamlabs.online/storage/files/8c4cbf1af327dca7176473fa355e2
 
 >NOTE: The password is `BTLO`
 
-## Challenge Submission 
+## Question 1 
 
-**Question 1) Name the supply chain attack related to Java logging library in the end of 2021 (Format: AttackNickname)**
+**Name the supply chain attack related to Java logging library in the end of 2021 (Format: AttackNickname)**
 
 Before opening any file from the internet (especially pdfs) we need to do a basic check in order to make sure it's safe.
 
@@ -104,7 +104,9 @@ After reading through the file we will eventually stumble upon the section `Supp
 
 **Answer: `Log4j`**
 
-**Question 2) Mention the MITRE Technique ID which effected more than 50% of the customers (Format: TXXXX)**
+## Question 2
+
+**Mention the MITRE Technique ID which effected more than 50% of the customers (Format: TXXXX)**
 
 We can sit there and read the entire report or press `ctrl + f` to search for keyword `TOP TECHNIQUES`.
 
@@ -112,21 +114,27 @@ We can sit there and read the entire report or press `ctrl + f` to search for ke
 
 **Answer: `T1059`**
 
-**Question 3) Submit the names of 2 vulnerabilities belonging to Exchange Servers (Format: VulnNickname, VulnNickname)**
+## Question 3
+
+**Submit the names of 2 vulnerabilities belonging to Exchange Servers (Format: VulnNickname, VulnNickname)**
 
 Using the `ctrl + f` and using the keywords `Exchange Server` we wil get the result.
 
 ![server](/images/the_report/server.png)
 
 **Answer: `proxylogon, proxyshell`**
+ 
+## Question 4
 
-**Question 4) Submit the CVE of the zero day vulnerability of a driver which led to RCE and gain SYSTEM privileges (Format: CVE-XXXX-XXXXX)**
+**Submit the CVE of the zero day vulnerability of a driver which led to RCE and gain SYSTEM privileges (Format: CVE-XXXX-XXXXX)**
 
 Since the format of a cve is always going to be starting with `CVE-` lets search for it.
 
 ![cve](/images/the_report/cve.png)
 
 **Answer: `CVE-2021-34527`**
+
+## Question 5
 
 **Mention the 2 adversary groups that leverage SEO to gain initial access (Format: Group1, Group2)**
 
@@ -136,7 +144,9 @@ Searching for keywords `SEO`.
 
 **Answer: `Gootkit, Yellow Cockatoo`**
 
-**Question 6) In the detection rule, what should be mentioned as parent process if we are looking for execution of malicious js files [Hint: Not CMD] (Format: ParentProcessName.exe)**
+## Question 6
+
+**In the detection rule, what should be mentioned as parent process if we are looking for execution of malicious js files [Hint: Not CMD] (Format: ParentProcessName.exe)**
 
 Using the keyword `parent`.
 
@@ -147,7 +157,9 @@ Hcrypt is mainly lauched via javascript and uses `wscript.exe` as parent process
 
 **Answer: `wscript.exe`**
 
-**Question 7) Ransomware gangs started using affiliate model to gain initial access. Name the precursors used by affiliates of Conti ransomware group (Format: Affiliate1, Affiliate2, Afilliate3)**
+## Question 7
+
+**Ransomware gangs started using affiliate model to gain initial access. Name the precursors used by affiliates of Conti ransomware group (Format: Affiliate1, Affiliate2, Afilliate3)**
 
 We can search for `ransomware group` and get a table with our answers.
 
@@ -155,7 +167,9 @@ We can search for `ransomware group` and get a table with our answers.
 
 **Answer: `Qbot,Bazar,IcedID`**
 
-**Question 8) The main target of coin miners was outdated software. Mention the 2 outdated software mentioned in the report (Format: Software1, Software2)**
+## Question 8
+
+**The main target of coin miners was outdated software. Mention the 2 outdated software mentioned in the report (Format: Software1, Software2)**
 
 Search for keyword `outdated`.
 
@@ -163,7 +177,8 @@ Search for keyword `outdated`.
 
 **Answer: `Jboss, weblogic`**
 
-**Question 9) Name the ransomware group which threatened to conduct DDoS if they didn't pay ransom (Format: GroupName)**
+## Question 9
+**Name the ransomware group which threatened to conduct DDoS if they didn't pay ransom (Format: GroupName)**
 
 Search for keyword `ddos`.
 
@@ -171,7 +186,9 @@ Search for keyword `ddos`.
 
 **Answer: `Fancy Lazarous`**
 
-**Question 10) What is the security measure we need to enable for RDP connections in order to safeguard from ransomware attacks? (Format: XXX)**
+## Question 10
+
+**What is the security measure we need to enable for RDP connections in order to safeguard from ransomware attacks? (Format: XXX)**
 
 Search for keyword `rdp`.
 

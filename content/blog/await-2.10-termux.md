@@ -5,9 +5,9 @@ date: 2026-09-27
 tags: ["github", "termux", "open source"]
 ---
 
-## Introduction
+## Issue
 
-I was scrolling throught the issues section of [termux-package](https://github.com/termux/termux-packages/issues/) when i stumpled upon this [issue](https://github.com/termux/termux-packages/issues/31984), upon a closer inspection of the logs i figured out it was a file not found error.
+I was scrolling throught the issues section of [termux-package](https://github.com/termux/termux-packages/issues/) when i stumpled upon this [issue](https://github.com/termux/termux-packages/issues/31984), upon a closer inspection of the logs i figured out it was a header not found error.
 
 ```
 -- Build files have been written to: /home/builder/.termux-build/await/build
@@ -27,6 +27,8 @@ await.c:#include <spawn.h>
 ```
 
 The `spawn.h` file literally had only one mention in the entire code base and it took me a really long time to found that it was a posix header file and is available on bionic c library but i was only implemented in API level 28 and termux compiles stuff for API level 27 and below.
+
+## Importing spawn
 
 After a little digging around to find how to implement it, i eventually found this [issue](https://github.com/termux/termux-packages/issues/4634) which gave lead me to `libandroid-spawn`.
 
@@ -124,6 +126,8 @@ termux_step_make() {
 ```
 
 We now try to build this package, but **suprisee** it won't work.
+
+## Custom compiler
 
 We actually need to insert the `-landroid-spawn` flag to the `$CC` line int the `termux_step_make()`.
 

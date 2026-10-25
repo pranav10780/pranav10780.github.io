@@ -19,9 +19,9 @@ There are a number of different ways to approach the analysis of these logs! Con
 
 > The file can be downloaded directly via `curl -LO https://blueteamlabs.online/storage/files/00fd9853557296dd3312d4529c137f1cecb329d7.zip`
 
-## Challenge Submission
+## Question 1
 
-**Question 1) How many Audit Failure events are there? (Format: Count of Events)**
+**How many Audit Failure events are there? (Format: Count of Events)**
 
 We can use grep to check for `Audit Failure` to fileter the log file
 
@@ -38,7 +38,9 @@ remnux@remnux:~/btlo/bruteforce$ wc -l failed.txt
 
 **Answer: 3103**
 
-**Question 2) What is the username of the local account that is being targeted? (Format: Username)**
+## Question 2
+
+**What is the username of the local account that is being targeted? (Format: Username)**
 
 We can use grep to seperate out the `Account Name` to see each individual accounts
 
@@ -64,7 +66,9 @@ We can see that `administrator` account was targeted the most
 
 **Answer: `administrator`**
 
-**Question 3) What is the failure reason related to the Audit Failure logs? (Format: String)**
+## Question 3
+
+**What is the failure reason related to the Audit Failure logs? (Format: String)**
 
 We can use grep again to search for `Failure Reason` in the log files
 
@@ -81,7 +85,9 @@ remnux@remnux:~/btlo/bruteforce$ sort reason.txt | uniq -c
 
 **Answer: `Unknown user name or bad password`**
 
-**Question 4) What is the Windows Event ID associated with these logon failures? (Format: ID)**
+## Question 4
+
+**What is the Windows Event ID associated with these logon failures? (Format: ID)**
 
 At the very top of the log file we can see
 
@@ -94,20 +100,26 @@ Under the `Event ID` we can see the answer
 
 **Answer: 4625**
 
-**Question 5) What is the source IP conducting this attack? (Format: X.X.X.X)**
+## Question 5
+
+**What is the source IP conducting this attack? (Format: X.X.X.X)**
 
 Under the network information of the log, we can see `source network address`
 
 **Answer: `113.161.192.227`**
 
-**Question 6) What country is this IP address associated with? (Format: Country)**
+## Question 6
+
+**What country is this IP address associated with? (Format: Country)**
 
 We can use a online [geolocation](www.geolocation.com) to check which country the ip address
 belongs to 
 
 **Answer: `vietnam`**
 
-**Question 7) What is the range of source ports that were used by the attacker to make these login requests? (LowestPort-HighestPort - Ex: 100-541)**
+## Question 7
+
+**What is the range of source ports that were used by the attacker to make these login requests? (LowestPort-HighestPort - Ex: 100-541)**
 
 We first use grep to seperate the ports only
 
